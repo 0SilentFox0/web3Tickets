@@ -3,12 +3,25 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"build": "nuxt build",
+		"build": "nuxt build --output public",
 		"dev": "nuxt dev",
 		"generate": "nuxt generate",
 		"preview": "nuxt preview",
 		"postinstall": "nuxt prepare"
 	},
+	"version": "2",
+	"builds": [
+		{
+			"src": "index.js",
+			"use": "@vercel/node"
+		}
+	],
+	"routes": [
+		{
+			"src": "/(.*)",
+			"dest": "index.js"
+		}
+	],
 	"dependencies": {
 		"@internationalized/date": "3.0.0-nightly.2967",
 		"@vuepic/vue-datepicker": "^9.0.3",
